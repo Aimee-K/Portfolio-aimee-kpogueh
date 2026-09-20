@@ -1,29 +1,16 @@
-const formulaire = document.querySelector('form');
+// Sélection des éléments HTML
+const hamburger = document.getElementById('hamburger');
+const navList = document.getElementById('nav-list');
+const navLinks = document.querySelectorAll('nav a');
 
-formulaire.addEventListener('submit', function(evenement) {
-    evenement.preventDefault();
-
-    const nom = document.querySelector('input[type="text"]').value;
-    const email = document.querySelector('input[type="email"]').value;
-    const message = document.querySelector('textarea').value;
-
-    if (nom === "" || email === "" || message === "") {
-        alert("Veuillez remplir tous les champs !");
-    } 
-    else if (!email.includes("@")) {
-        alert("Veuillez entrer une adresse email valide !");
-    } 
-    else {
-        alert("Merci " + nom + ", votre message a bien été envoyé !");
-        formulaire.reset(); // Vide les champs du formulaire
-    }
+// 1. Ouvrir / Fermer le menu au clic sur l'icône hamburger
+hamburger.addEventListener('click', () => {
+    navList.classList.toggle('active');
 });
 
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-
-if (hamburger && navMenu) {
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-  });
-}
+// 2. Fermer automatiquement le menu quand on clique sur un lien (À propos, Contact, etc.)
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+});
