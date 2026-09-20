@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif; /* 1 seule police système */
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* COULEUR 1 : Fond */
+    color: #5a2a3a;            /* COULEUR 2 : Texte principal & titres (Bordeaux) */
+}
+
+header {
+    background-color: #f9f9f9; /* Même fond que le body pour rester sur 1 couleur de fond */
+    padding: 15px;
+    border-bottom: 1px solid #5a2a3a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #5a2a3a; /* Bordeaux */
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #5a2a3a; /* Bordeaux */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #5a2a3a;
+    background-color: #f9f9f9;
+    color: #5a2a3a;
+}
+
+button {
+    background-color: #5a2a3a; /* Bordeaux */
+    color: #f9f9f9;            /* Gris très clair pour le texte du bouton */
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.logo-projet {
+    width: 150px;
+    height: auto;
+}
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #5a2a3a;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+  }
+
+  nav.active {
+    display: block; /* Affiche le menu quand on clique sur le hamburger */
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 601px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 900px) {
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
