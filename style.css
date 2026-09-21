@@ -1,9 +1,9 @@
 /* ==========================================
-   CHARTE GRAPHIQUE & VARIABLES
-   Palette : Bordeaux rosé, Rose poudré, Blanc crème, Noir doux
+   VARIABLES & REINITIALISATION
    ========================================== */
 :root {
   --bordeaux: #7A2838;
+  --bordeaux-hover: #5C1E2A;
   --rose-poudre: #F5E6E8;
   --blanc-creme: #FAF7F2;
   --noir-doux: #2B2B2B;
@@ -23,6 +23,56 @@ body {
   background-color: var(--blanc-creme);
   color: var(--noir-doux);
   line-height: 1.6;
+}
+
+/* ==========================================
+   TYPOGRAPHIE & BOUTONS
+   ========================================== */
+h1, h2, h3 {
+  color: var(--bordeaux);
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--bordeaux);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: var(--bordeaux);
+  color: var(--blanc);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--ombre);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background-color: var(--bordeaux-hover);
+  transform: translateY(-2px);
+}
+
+section {
+  padding: 100px 8% 60px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* ==========================================
@@ -67,7 +117,6 @@ nav a:hover {
   color: var(--bordeaux);
 }
 
-/* Menu Hamburger (Mobile) */
 .hamburger {
   display: none;
   cursor: pointer;
@@ -80,57 +129,6 @@ nav a:hover {
   height: 3px;
   background-color: var(--noir-doux);
   border-radius: 2px;
-}
-
-/* ==========================================
-   SECTIONS & SECTEURS
-   ========================================== */
-section {
-  padding: 100px 8% 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-h1, h2, h3 {
-  color: var(--bordeaux);
-  margin-bottom: 20px;
-}
-
-h2 {
-  font-size: 2.2rem;
-  text-align: center;
-  position: relative;
-  margin-bottom: 40px;
-}
-
-h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background-color: var(--bordeaux);
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
-
-/* Boutons */
-.btn {
-  display: inline-block;
-  padding: 12px 28px;
-  background-color: var(--bordeaux);
-  color: var(--blanc);
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--ombre);
-  transition: var(--transition);
-}
-
-.btn:hover {
-  background-color: #5c1e2a;
-  transform: translateY(-2px);
 }
 
 /* ==========================================
@@ -151,13 +149,20 @@ h2::after {
 .hero-content h1 {
   font-size: 3rem;
   line-height: 1.2;
+  margin-bottom: 8px;
 }
 
-.slogan {
+.slogan,
+.hero-subtitle {
   font-size: 1.3rem;
   color: var(--bordeaux);
   font-style: italic;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+}
+
+.hero-description {
+  margin-bottom: 25px;
+  line-height: 1.5;
 }
 
 .hero-image {
@@ -191,8 +196,46 @@ h2::after {
   border-radius: 15px;
 }
 
+.about-content p,
+#about p {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
 /* ==========================================
-   SECTION COLLECTION (CARTES DE VÊTEMENTS)
+   SECTION COMPÉTENCES
+   ========================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.skill-card {
+  background-color: var(--blanc);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--ombre);
+  transition: var(--transition);
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+}
+
+.skill-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.skill-card p {
+  line-height: 1.5;
+  color: var(--noir-doux);
+}
+
+/* ==========================================
+   SECTION COLLECTION
    ========================================== */
 .collection-grid {
   display: grid;
@@ -233,7 +276,50 @@ h2::after {
 }
 
 /* ==========================================
-   SECTION CONTACT & FORMULAIRE
+   CARROUSEL TÉMOIGNAGES
+   ========================================== */
+.testimonial-carousel {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 180px;
+}
+
+.testimonial-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transform: translateY(10px);
+  background-color: var(--blanc);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--ombre);
+  text-align: center;
+}
+
+.testimonial-card.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 15px;
+  color: var(--noir-doux);
+}
+
+.testimonial-card span {
+  font-weight: 700;
+  color: var(--bordeaux);
+}
+
+/* ==========================================
+   SECTION CONTACT & FOOTER
    ========================================== */
 #contact form {
   max-width: 600px;
@@ -273,6 +359,9 @@ footer {
   margin-top: 60px;
 }
 
+/* ==========================================
+   RESPONSIVE DESIGN (MOBILE & TABLETTE)
+   ========================================== */
 @media (max-width: 768px) {
   header {
     padding: 15px 5%;
